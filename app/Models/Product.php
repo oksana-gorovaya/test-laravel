@@ -14,8 +14,14 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
+        'product_code',
         'name',
-        'description',
         'price',
     ];
+
+    public function promos()
+    {
+        return $this->belongsToMany(Promo::class, 'promo_to_products');
+    }
 }
