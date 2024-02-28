@@ -19,12 +19,6 @@
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>
-<!--        <env name="DB_CONNECTION" value="mysql"/>-->
-<!--        <env name="DB_DATABASE" value="example_app"/>-->
-<!--        <env name="DB_HOST" value="mysql"/>-->
-<!--        <env name="DB_PORT" value="3306"/>-->
-<!--        <env name="DB_USERNAME" value="sail"/>-->
-<!--        <env name="DB_PASSWORD" value="password"/>-->
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/>
         <env name="BCRYPT_ROUNDS" value="4"/>

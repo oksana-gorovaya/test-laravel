@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('promos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('discount_percent');
+            $table->string('name')->index();
+            $table->integer('discount_percent');
             $table->string('min_item_quantity');
-            $table->string('max_item_quantity')->nullable();
             $table->timestamps();
         });
     }

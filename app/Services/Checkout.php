@@ -19,11 +19,11 @@ class Checkout
     {
         $this->productsInCart->add($item);
 
-            foreach ($this->pricingRules as $pricingRule) {
-                if ($pricingRule->isApplicable($this->productsInCart, $item)) {
-                    $this->productsInCart = $pricingRule->apply($this->productsInCart, $item);
-                }
+        foreach ($this->pricingRules as $pricingRule) {
+            if ($pricingRule->isApplicable($this->productsInCart, $item)) {
+                $this->productsInCart = $pricingRule->apply($this->productsInCart, $item);
             }
+        }
 
         $this->total = $this->productsInCart->sum(fn ($product) => $product->price);
     }

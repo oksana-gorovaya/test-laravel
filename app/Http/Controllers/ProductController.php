@@ -18,11 +18,23 @@ class ProductController extends Controller
     {
     }
 
+    /**
+     * Specification:
+     * - Retrieves all products.
+     *
+     * @api
+     */
     public function index(): Collection
     {
         return $this->productRepository->getProducts();
     }
 
+    /**
+     * Specification:
+     * - Creates a product.
+     *
+     * @api
+     */
     public function store(StoreProductRequest $request): Response
     {
         $validatedData = $request->validated();

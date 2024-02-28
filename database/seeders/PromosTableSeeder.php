@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\PricingRule;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,13 +14,13 @@ class PromosTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('promos')->insert([
-            'name' => 'buy-one-get-one-free',
+            'name' => PricingRule::BUY_ONE_GET_ONE_FREE,
             'discount_percent' => 100,
             'min_item_quantity' => 2,
         ]);
 
         DB::table('promos')->insert([
-            'name' => 'bulk',
+            'name' => PricingRule::BULK_PURCHASE,
             'discount_percent' => 10,
             'min_item_quantity' => 3,
         ]);

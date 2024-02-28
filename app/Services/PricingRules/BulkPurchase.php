@@ -2,28 +2,40 @@
 
 namespace App\Services\PricingRules;
 
+use App\Enums\PricingRule;
+use App\Models\Product;
+use App\Models\Request\CartItem;
 use App\Repositories\PromoRepository;
 use Illuminate\Support\Collection;
 
-class BulkPurchase
+class BulkPurchase implements PricingRuleInterface
 {
     public function __construct(public PromoRepository $promoRepository)
     {
     }
 
-    public function isApplicable(Collection $productsInCart, $cartItem): bool
+    /**
+     * @param Collection<CartItem> $productsInCart
+     */
+    public function isApplicable(Collection $productsInCart, CartItem $cartItem): bool
     {
-        $promos = $this->promoRepository->findPromosByNameNadProductCode('bulk', $cartItem->productCode);
+        $promo = $this->promoRepository->findPromoByNameAndProductCode(PricingRule::BULK_PURCHASE, $cartItem->productCode);
         $productQuantity = $productsInCart->where('productCode', $cartItem->productCode)->count();
 
-        return count($promos) > 0 && $productQuantity >= $this->promoRepository->findMinItemQuantityByName('bulk');
+        return $promo !== null && $productQuantity >= $promo->min_item_quantity;
     }
 
-    public function apply(Collection $productsInCart, $cartItem): Collection
+    /**
+     * @param Collection<Product> $productsInCart
+     *
+     * @return Collection<CartItem> $productsInCart
+     */
+    public function apply(Collection $productsInCart, CartItem $cartItem): Collection
     {
+        $promo = $this->promoRepository->findPromoByNameAndProductCode(PricingRule::BULK_PURCHASE, $cartItem->productCode);
         $promoProducts = $productsInCart->where('productCode', $cartItem->productCode)->all();
         foreach ($promoProducts as $promoProduct) {
-            $promoProduct->price -= $cartItem->price / 100 * $this->promoRepository->findDiscountPercentByName('bulk');
+            $promoProduct->price -= $cartItem->price / 100 * $promo->discount_percent;
         }
 
         return $productsInCart;

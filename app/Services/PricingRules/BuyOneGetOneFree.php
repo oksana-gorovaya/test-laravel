@@ -2,35 +2,43 @@
 
 namespace App\Services\PricingRules;
 
+use App\Enums\PricingRule;
 use App\Models\Request\CartItem;
 use App\Repositories\PromoRepository;
 use Illuminate\Support\Collection;
 
-class BuyOneGetOneFree
+class BuyOneGetOneFree implements PricingRuleInterface
 {
     public function __construct(public PromoRepository $promoRepository)
     {
     }
 
+    /**
+     * @param Collection<CartItem> $productsInCart
+     */
     public function isApplicable(Collection $productsInCart, CartItem $cartItem): bool
     {
-        $promos = $this->promoRepository->findPromosByNameNadProductCode('buy-one-get-one-free', $cartItem->productCode);
+        $promo = $this->promoRepository->findPromoByNameAndProductCode(PricingRule::BUY_ONE_GET_ONE_FREE, $cartItem->productCode);
         $productQuantity = $productsInCart->where('productCode', $cartItem->productCode)->count();
 
-        return count($promos) > 0 && ($productQuantity >= $this->promoRepository->findMinItemQuantityByName('buy-one-get-one-free'));
+        return $promo !== null && ($productQuantity >= $promo->min_item_quantity);
     }
 
+    /**
+     * @param Collection<CartItem> $productsInCart
+     *
+     * @return Collection<CartItem> $productsInCart
+     */
     public function apply(Collection $productsInCart, CartItem $cartItem): Collection
     {
+        $promo = $this->promoRepository->findPromoByNameAndProductCode(PricingRule::BUY_ONE_GET_ONE_FREE, $cartItem->productCode);
         $promoProducts = $productsInCart->where('productCode', $cartItem->productCode)->toArray();
-        $minItemQuantity = $this->promoRepository->findMinItemQuantityByName('buy-one-get-one-free');
-        $discountPercent = $this->promoRepository->findDiscountPercentByName('buy-one-get-one-free');
 
         foreach ($promoProducts as $index => $promoProduct) {
             $index++;
-            if ($index % $minItemQuantity === 0) {
+            if ($index % $promo->min_item_quantity === 0) {
                 $copy = clone($cartItem);
-                $promoProduct->setPrice($copy->price -= $cartItem->price / 100 * $discountPercent);
+                $promoProduct->setPrice($copy->price -= $cartItem->price / 100 * $promo->discount_percent);
             }
         }
 

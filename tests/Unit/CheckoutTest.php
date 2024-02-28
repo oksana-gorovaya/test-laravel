@@ -101,7 +101,7 @@ class CheckoutTest extends TestCase
         $this->assertEquals(16.61, $checkout->getTotal());
     }
 
-    public function testBuyOneGetOneFreeWithadditionalProducts()
+    public function testBuyOneGetOneFreeWithAdditionalProducts()
     {
         //Given
         $this->seed();
