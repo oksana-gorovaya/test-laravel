@@ -1,0 +1,33 @@
+_id: req_6f9fa0b172a148f0a90619e5068a9920
+type: Request
+parentId: wrk_312c439ee4c74a9d81735349e2ef1622
+modified: 1715269134890
+created: 1715269037572
+url: http://0.0.0.0:80/api/assign-promo
+name: New Request
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"product_name": "Fruit tea",
+    	"promo_name": "buy-one-get-one-free" 
+    }
+preRequestScript: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+  - name: User-Agent
+    value: insomnia/9.1.1
+authentication: {}
+metaSortKey: -1715269037572
+isPrivate: false
+pathParameters: []
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,33 @@
+_id: req_9184e0555330457cbbd2a2abe9eb1e8a
+type: Request
+parentId: wrk_312c439ee4c74a9d81735349e2ef1622
+modified: 1715269618854
+created: 1715269585154
+url: http://0.0.0.0:80/api/unassign-promo
+name: New Request
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"product_name": "Fruit tea",
+    	"promo_name": "buy-one-get-one-free" 
+    }
+preRequestScript: ""
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+  - name: User-Agent
+    value: insomnia/9.1.1
+authentication: {}
+metaSortKey: -1715269585154
+isPrivate: false
+pathParameters: []
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
