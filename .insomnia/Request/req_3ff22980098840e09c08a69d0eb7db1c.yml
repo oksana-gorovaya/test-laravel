@@ -1,0 +1,38 @@
+_id: req_3ff22980098840e09c08a69d0eb7db1c
+type: Request
+parentId: fld_9a14e48951fd4ea999b4e60bac0ae5bd
+modified: 1715695024435
+created: 1715695024435
+url: "{{ _.base_url }}/user"
+name: Create user
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": 10,
+      "username": "theUser",
+      "firstName": "John",
+      "lastName": "James",
+      "email": "john@email.com",
+      "password": "12345",
+      "phone": "12345",
+      "userStatus": 1
+    }
+preRequestScript: ""
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication: {}
+metaSortKey: -1715695024435
+isPrivate: false
+pathParameters: []
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

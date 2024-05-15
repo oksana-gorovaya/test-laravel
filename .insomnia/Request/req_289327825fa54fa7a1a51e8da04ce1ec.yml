@@ -1,0 +1,38 @@
+_id: req_289327825fa54fa7a1a51e8da04ce1ec
+type: Request
+parentId: fld_9a14e48951fd4ea999b4e60bac0ae5bd
+modified: 1715695024437
+created: 1715695024437
+url: "{{ _.base_url }}/user/{{ _.username }}"
+name: Update user
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": 10,
+      "username": "theUser",
+      "firstName": "John",
+      "lastName": "James",
+      "email": "john@email.com",
+      "password": "12345",
+      "phone": "12345",
+      "userStatus": 1
+    }
+preRequestScript: ""
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication: {}
+metaSortKey: -1715695024437
+isPrivate: false
+pathParameters: []
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

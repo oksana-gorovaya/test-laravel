@@ -1,0 +1,35 @@
+_id: req_e6a30a533d054844926862358809b76e
+type: Request
+parentId: fld_dd93b37f3825457eb4e994403361423c
+modified: 1715695024433
+created: 1715695024433
+url: "{{ _.base_url }}/pet/{{ _.petId }}"
+name: Updates a pet in the store with form data
+description: ""
+method: POST
+body: {}
+preRequestScript: ""
+parameters:
+  - name: name
+    disabled: true
+    value: string
+  - name: status
+    disabled: true
+    value: string
+headers: []
+authentication:
+  clientId: "{{ _.oauth2ClientId }}"
+  grantType: implicit
+  scope: write:pets read:pets
+  type: oauth2
+  redirectUrl: "{{ _.oauth2RedirectUrl }}"
+  authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+metaSortKey: -1715695024433
+isPrivate: false
+pathParameters: []
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

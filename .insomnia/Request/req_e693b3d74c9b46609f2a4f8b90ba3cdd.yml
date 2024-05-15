@@ -1,0 +1,32 @@
+_id: req_e693b3d74c9b46609f2a4f8b90ba3cdd
+type: Request
+parentId: fld_dd93b37f3825457eb4e994403361423c
+modified: 1715695024432
+created: 1715695024432
+url: "{{ _.base_url }}/pet/findByTags"
+name: Finds Pets by tags
+description: ""
+method: GET
+body: {}
+preRequestScript: ""
+parameters:
+  - name: tags
+    disabled: true
+    value: string
+headers: []
+authentication:
+  clientId: "{{ _.oauth2ClientId }}"
+  grantType: implicit
+  scope: write:pets read:pets
+  type: oauth2
+  redirectUrl: "{{ _.oauth2RedirectUrl }}"
+  authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+metaSortKey: -1715695024432
+isPrivate: false
+pathParameters: []
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
