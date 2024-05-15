@@ -1,9 +1,9 @@
 _id: req_9184e0555330457cbbd2a2abe9eb1e8a
 type: Request
 parentId: wrk_312c439ee4c74a9d81735349e2ef1622
-modified: 1715269618854
+modified: 1715768793449
 created: 1715269585154
-url: http://0.0.0.0:80/api/unassign-promo
+url: http://0.0.0.0:80/api/unassign-promossss
 name: New Request
 description: ""
 method: POST
